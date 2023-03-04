@@ -13,9 +13,8 @@ public class Test : MonoBehaviour
 
     public string[] s = new string[]
     {
-        "Hi, how are you?:Avira",
-        "Its' lovely weather today.",
-        "To be honest, I'm glad its not snowing anymore"
+        "I...:Avira",
+        "I have to tell you something..."
     };
 
     int index = 0;
@@ -38,9 +37,9 @@ public class Test : MonoBehaviour
     }
     void Say(string s)
     {
-        string[] parts = s.Split(";");
+        string[] parts = s.Split(":");
         string speech = parts[0];
         string speaker = (parts.Length >= 2) ? parts[1] : "";
-        dialogue.say(speech, speaker);
+        dialogue.say(speech,true, speaker);
     }
 }
