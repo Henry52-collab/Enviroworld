@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    
     public static string[] piece_tags;
     public GameObject White_Square;
     public GameObject Vertical_Line;
@@ -13,7 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject Green_Square;
     public GameObject Square_Pieces;
 
-    public static int lengthMax=10;    
+    public static int lengthMax=3;    
     public static int boardBottomCornerx=-5;
     public static int boardBottomCornery=-3;
     public static int level;
@@ -28,12 +30,15 @@ public class GameManager : MonoBehaviour
 
     //prebuilt boards will be stored in this
     //int values: 0 inidactes empty, 1 indicates a plain square, 2=combo square, cover all of these for a bonus, prob money
-    private static int[][] boardLVL1=new int[][]{new int[]{1,2,0,1,1,1,1,0},new int[]{1,1,1,1,1,0,1},new int[]{1,1,1,0,2,1,1},new int[]{1,1,1,0,0,1,1},new int[]{0,1,1,0,2,1,1,1},new int[]{1,1,1,0,1,1,0,1}};
-    public int[][] piece1LVL1=new int[][]{new int[]{0,0,0},new int[]{0,1,1},new int[]{1,1,0}};
-    public int[][] piece2LVL1=new int[][]{new int[]{0,0,1},new int[]{1,1,1},new int[]{1,0,0}};
+    private static int[][] boardLVL1=new int[][]{new int[]{0,1,1},new int[]{2,1,1},new int[]{1,1,1}};
+    private static int[][] boardLVL1V=new int[][]{new int[]{0,1,1},new int[]{2,1,1},new int[]{1,1,1}};
+    public int[][] piece1LVL1=new int[][]{new int[]{0,0,0},new int[]{1,1,0},new int[]{1,1,0}};
+    public int[][] piece2LVL1=new int[][]{new int[]{0,0,0},new int[]{1,1,1},new int[]{0,0,0}};
     //private int[][] piece3LVL1=new int[][]{new int[]{0,1,1,1},new int[]{1,1,1,0},new int[]{1,1,0,0},new int[]{0,1,0,0}};
     //for now two pieces, eco piece and non eco piece
+    private static int[][] victoryBoardlvl1;
     
+
     public int[][][] piecesLVL1;
     private int[][] boardLVL2=new int[][]{};
     private static int[][][] allBoards;
@@ -49,8 +54,9 @@ public class GameManager : MonoBehaviour
     
 
     //exit
-    public void exit(){
+    public static void exit(){
         Debug.Log("exit");
+        //SceneManager.LoadScene("Sample Scene");
     }
 
     //checks to see if the piece collides with a white tile
@@ -63,7 +69,7 @@ public class GameManager : MonoBehaviour
                             int x=i+boardBottomCornerx;
                             int y=j+boardBottomCornery;
                             if (blockAt(i,j,level)==0){
-                                if(square.transform.position.x==x&&square.transform.position.y==y){
+                                if(square.transform.position.x==x&&square.transform.position.y==y){                                    
                                     relocatePiece(tag);
                                     return true;                                                                   
                                 }
@@ -76,26 +82,44 @@ public class GameManager : MonoBehaviour
         return false;        
     }
 
-    public static bool checkCollision2(string tag){
+    public static void checkCollision2(string tag){
         foreach(GameObject[] piece in pieces){
             if(piece!=null&&piece[0].tag.Equals(tag)){
                 foreach(GameObject square in piece){
                     for(int i=0;i<lengthMax;i++){
-                        for (int j = 0; j < lengthMax; j++) {
-                            int x=i+boardBottomCornerx;
-                            int y=j+boardBottomCornery;
-                            if (blockAt(i,j,level)==1){
-                                if(square.transform.position.x==x&&square.transform.position.y==y){                                   
-                                    return true;                                                                   
+                    for (int j = 0; j < lengthMax; j++) {
+                        int x=i+boardBottomCornerx;
+                        int y=j+boardBottomCornery;
+                            if (blockAt(i,j,level)==1){    
+                                if(square.transform.position.x==x&&square.transform.position.y==y){                                                               
+                                    boardLVL1V[i][j]=0;
+                                    Debug.Log("hihi");
+                                    if (total(boardLVL1V)<3){
+                                        exit();
+                                    }                                                                                                       
                                 }
                             }
                         }
                     }                    
                 }
             }
-        }
-        return false;        
+        }        
     }
+
+    public static int total(int[][] board){
+        int sum=0;
+        foreach (int[] row in board)
+        {
+            foreach (int square in row)
+            {
+                Debug.Log(square);
+                if (square==1)sum++;
+            }
+        }
+        Debug.Log("returning sum= "+sum);
+        return sum;
+    }
+
 
     //sets the position of each peice and line relative to the cursor
     public static void setDelta(Vector2 mousePosition,string tag){
@@ -171,6 +195,7 @@ public class GameManager : MonoBehaviour
         allBoards=new int[][][]{boardLVL1,boardLVL2};
         piecesLVL1=new int[][][]{piece1LVL1,piece2LVL1};        
         allPiecesAllLevels=new int[][][][]{piecesLVL1};
+        
         lengthMax=boardLVL1.Length;
         pieces=new GameObject[piecesLVL1.Length*20][];
         BuildBoard(0);    

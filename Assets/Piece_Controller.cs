@@ -45,13 +45,8 @@ public class Piece_Controller : MonoBehaviour
             if(GameManager.checkCollision(gameObject.tag)){
                 int i=tag.ToCharArray()[5]-'0';                
             }
-            if(GameManager.checkCollision2(gameObject.tag)){
-                covered++;   
-                if(covered==2){
-                    GameObject.FindObjectOfType<GameManager>().exit();
-                }            
-            }
-            //else GameObject.FindObjectOfType<GameManager>().BuildPiece(GameObject.FindObjectOfType<GameManager>().piecesLVL1[1]);
+            
+            GameManager.checkCollision2(tag);
 
         }
     }
