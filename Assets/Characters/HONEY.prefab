@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7617345606145779546}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
@@ -92,5 +92,9 @@ MonoBehaviour:
   characterName: HONEY
   expressionNames:
   - idle
+  - transform
+  - big_oil
   expressions:
-  - {fileID: 21300000, guid: ca64417e4c953b242b8aca4a4c6dfc98, type: 3}
+  - {fileID: 21300000, guid: b0411532905363245ab0b32ec9d5a40b, type: 3}
+  - {fileID: 21300000, guid: 25c2da2a6526a5b42b3560f9e21fa637, type: 3}
+  - {fileID: 21300000, guid: a5854bef9213d4145a7e395dd59ada4b, type: 3}
