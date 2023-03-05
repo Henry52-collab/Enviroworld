@@ -242,14 +242,7 @@ MonoBehaviour:
   Purple_Square: {fileID: 1561047728899462690, guid: c83a0ce2f04e72443a4f37dcb818f274, type: 3}
   Green_Square: {fileID: 8296562361671656864, guid: 8a2f6cc08bd5fc54d8c55e786039e1b2, type: 3}
   Square_Pieces: {fileID: 5713729802053261800, guid: 8c6e4591438d4c440a1c6fb96b135321, type: 3}
-  lengthMax: 10
-  boardBottomCornerx: -5
-  boardBottomCornery: -3
-  pieceRowMax: 3
   pieceColumnMax: 3
-  leftBorderShop: 5
-  lowerBorderShop: -4
-  verticalInShopInterval: 5
 --- !u!4 &1492232328
 Transform:
   m_ObjectHideFlags: 0
