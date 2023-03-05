@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
             visualManager.AddCharacter(last, "idle", false);
         }
         if(Input.GetKeyDown(KeyCode.N)){
-            print("N");
+            //print("N");
             dialogueManager.GetNextLine();
         }
     }
