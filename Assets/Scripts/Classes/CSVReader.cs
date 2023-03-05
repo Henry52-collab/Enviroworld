@@ -23,7 +23,7 @@ public class CSVReader
         for(var i=1; i < lines.Length; i++) {
  
             var values = Regex.Split(lines[i], SPLIT_RE);
-            if(values.Length == 0) continue;            // ||values[0] == ""
+            if(values.Length == 0 || (values[0] == "" && values[3] == "")) continue;            // ||values[0] == ""
  
             var entry = new Dictionary<string, object>();
             for(var j=0; j < header.Length && j < values.Length; j++ ) {

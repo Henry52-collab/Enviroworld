@@ -1,0 +1,134 @@
+Scene,Person,Pose,Text
+#^,YOU,NEUTRAL,(I got this.)
+,CYRUS,SMILING,"""Hi! How can I help you?"""
+,YOU,SMILING,"""Hi! I'm the new hire, it's my first day!"""
+,CYRUS,SMILING,"""Oh! Yes, the boss wants to see you -- let me bring you to her."""
+,YOU,SMILING,"""Thank you so much."""
+,CYRUS,SMILING,"""I'm Cyrus, and let me be the first to welcome you to Big Energy Corp."""
+~,,,
+&,CYRUS,SMILING,"""Cassandra? Here's the new guy, just arrived."""
+,CASSANDRA,NEUTRAL,"""Ah, yes. Welcome to Big Energy Corp."""
+,YOU,SMILING,"""Thanks for having me! I'm excited to do some great work here."""
+,CYRUS,SMILING,"""Good luck!"""
+^,CASSANDRA,SMUG,"""Well, why wouldn't you be? After all, we do do some amazing work here."""
+,CASSANDRA,SUMG,"""Walk with me."""
+~,,,
+,CASSANDRA,SMUG,"""Big Energy Corp. is solely responsible for ensuring new up-and-coming residential districts get electricity."""
+,CASSANDRA,SMUG,"""And with you as our Chief Energy Coordinator, you get the privilege of determining where that energy comes from."""
+,CASSANDRA,SMUG,"""I was in your shoes a long time ago, and I made very cost-efficient choices and look at me now!"""
+,YOU,WORRIED,"""hehheh... Oh yeah?"""
+,CASSANDRA,SMUG,"""If I have one piece of advice to give you, it's to save money."""
+,CASSANDRA,SERIOUS,"""Money makes the world go 'round, wouldn't be here without it."""
+~,,,
+,CASSANDRA,SMILING,"""Anyway, here's your cubicle. The Harminee project should be coming your way in the next few hours. I expect great things!"""
+&,YOU,WORRIED,(Oh boy.)
+$,BARRY,SMILING,"""Knock knock! Hey new guy!"""
+,YOU,SHOCKED,"""Oh! Hey, who are you?"""
+,BARRY,SMILING,"""Your co-worker! I'm Barry, just a couple cubicles down. Thought I'd say hi to the new guy."""
+,BARRY,SMILING,"""First day's always a little overwhelming. I still remember my first day..."""
+,BARRY,SMILING,"""Anyway, anything I can help with?"""
+,YOU,WORRIED,"""Uh..."""
+,BARRY,SMILING,"""Need me to show you the ropes?"""
+,YOU,WORRIED,"""Yeah... that'd be great, haha."""
+,BARRY,SMILING,"""Don't worry about it, I was just like you once. Here, lemme show you how this works."""
+~#$,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+~#%,,,
+,SIENNA,SMILING,"""Hi I'm the new employee here."""
+,YOU,SMILING,"""Hi nice to meet you."""
+,YOU,NEUTRAL,"""How are you liking it here so far?"""
+,SIENNA,NEUTRAL,"""It's going pretty good so far, I can't wait to be able to make an impact while I'm here."""
+,SIENNA,NEUTRAL,""" I feel like the electricity plan for my area was designed, pretty well but I think there could be improvements."""
+,YOU,NEUTRAL,"""Oh yea? What are the improvements you would make?"""
+,SIENNA,NEUTRAL,"""The improvements I would make would be to try to make a lower cost electricitiy plan for neighbourhoods so that the customers also have low electricity bills."""
+,SIENNA,NEUTRAL,"""I live in Harminee and although the prices for electricity aren't super high, it would be helpful if it could be further reduced, as in my neighbourhood people are constantly trying to make ends meet."""
+,YOU,NEUTRAL,"""Oh, Harminee? I actually worked on that project,"""
+,YOU,NEUTRAL,"""My objective for that project was to reduce the cost as much as I could, but at the same time ensuring that I was being environmentally consious, that is why you might find the prices a bit high."""
+,YOU,NEUTRAL,"""In any case, I hope that you can use your perspective to do great work here!"""
+,,,
+,,,
+~#*,,,
+,HONEY,SMILING,"""Hey, how was work?"""
+,YOU,WORRIED,"""Hey, Honey. It was okay but I feel my manager has the wrong outlook on things."""
+,HONEY,WORRIED,"""Oh? I'm sorry to hear that. What happened?"""
+,,,
+1,,,
+,YOU,WORRIED,"""My manager keeps pushing the narrative of saving money, but she doesn't seem to care at all about the environmental impacts of the companies actions."""
+,YOU,WORRIED,"""Today she called me into her office and went off at me for preforming poorly on my first project."""
+,YOU,WORRIED,"""It was because I decided to focus on creating an environmentally friendly plan for the project I was working on."""
+,HONEY,WORRIED,"""I think you should focus on what your boss wants, as you don't want to risk your job, and also at end of the day they are company so profitability comes first."""
+,YOU,NEUTRAL,"""Yea I guess so..."""
+,,,
+,,,
+3,,,
+~#&,,,
+(your cubicle),CASSANDRA,SMILING,"""Hey, come on into my office!"""
+,YOU,NEUTRAL,"""Sure thing."""
+~,,,
+(boss office),CASSANDRA,SMILING,"""You've been doing a great job for the company, profits are through the roof!"""
+,YOU,WORRIED,"""I'm glad to hear it, but aren't you concerned about the environment?"""
+,CASSANDRA,SMILING,"""Nope! We've been doing better than ever!"""
+,YOU,WORRIED,"""But havent you been paying attention to the news?"""
+,YOU,WORRIED,"""Extreme weather and temperature fluctuations, poor air quality..."""
+,CASSANDRA,SMILING,"""I haven't noticed anything, just go home and celebrate! Don't tell anyone I said this, but there might be a promotion in the works for you..."""
+,YOU,WORRIED,"""Ok..."""
+~&$%,,,
+(breakroom),SIENNA,WORRIED,"""And I've been having this terrible cough the past couple of months..."""
+,BARRY,WORRIED,"""Yeah, me too, and there's been terrible winds, too."""
+,SIENNA,WORRIED,"""Swear on my mother's grave, I thought a tornado was coming. It was crazy."""
+,YOU,WORRIED,"""It's getting hotter, too, right?"""
+,SIENNA,WORRIED,"""Yeah! I feel like it wasn't this hot last year."""
+,YOU,WORRIED,"""This definitely has something to do with us, right?"""
+,BARRY,WORRIED,"""...Do you really think so?"""
+,YOU,WORRIED,"""Isn't it obvious?"""
+,SIENNA,WORRIED,"""Are you serious? You think we caused this?"""
+,YOU,WORRIED,"""Climate change isn't a joke, guys. Cassandra just can't see it, she's blinded by greed."""
+,BARRY,WORRIED,"""...She is pretty set in her ways."""
+,YOU,WORRIED,"""Yeah, and now look what's happened."""
+,SIENNA,WORRIED,"""Is there any way we can fix it?"""
+,YOU,WORRIED,"""I really don't know..."""
+~$%*,,,
+(kitchen),HONEY,SMILING,"""Hey baby! How are you doing?"""
+,YOU,WORRIED,"""Really not that good. Haven't you noticed the dramatic changes in the environment?"""
+,HONEY,SMILING,"""Whatever do you mean?"""
+,YOU,WORRIED,"""You can't tell me you haven't noticed. The record-breaking heat? The tornados? The smog?"""
+*<,HONEY,SMILING,"""I don't know what you're talking about, sweetie."""
+,YOU,WORRIED,"""How can you not know what I'm talking about?"""
+,HONEY,SMILING,"""Everything has turned out exactly how I planned."""
+,YOU,WORRIED,"""...What?"""
+<>,BIG OIL,SMILING,"""Hehe..."""
+,YOU,WORRIED,"""What."""
+,BIG OIL,SMILING,"""The world is more dependent on oil than ever before, and it will be your downfall."""
+,BIG OIL,SMILING,"""And it's all your fault. Has that sunk in yet?"""
+,BIG OIL,SMILING,"""Hehe..."""
+~#>,,,
+END SCREEN (BAD ENDING),,,"""As a result of your actions, pollution has negatively impacted the environment immensely."""
+,,,"""Climate change, natural disasters, poor air quality, and multitudes of other side effects continue to plague humanity."""
+,,,"""Soon, Earth will become inhospitable and society will collapse."""
+,,,"""GAME OVER"""

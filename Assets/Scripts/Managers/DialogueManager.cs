@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     int i = 0;
 
     void Awake() {
-        data = CSVReader.Read ("Dialogue - Sheet1"); 
+        data = CSVReader.Read ("DialogueSheet"); 
     }
 
     // Update is called once per frame
@@ -27,19 +27,15 @@ public class DialogueManager : MonoBehaviour
         i++;
     }
 
-    // if ~ we want scene change
-    // if any of the other characters we want to addCharacter if they are not already there
-    // if they are already there then we don't add them and skip over
-    // why do you want to do StringBuilder with all characters 
-
     public void handleChar(){
-
+        print((string)data[i]["Scene"]);
         foreach(char c in (string)data[i]["Scene"])
-
         {
+            print(c);
             switch (c)
             {
                 case '#':
+                    print(visualManager.CharacterInScene("YOU"));
                     if(visualManager.CharacterInScene("YOU"))
                     {
                         visualManager.RemoveCharacter("YOU");

@@ -27,7 +27,7 @@ public class VisualManager : MonoBehaviour
     }
 
     public void AddCharacter(string characterName, string emotionName, bool lr){
-        if(lr){
+        if(!lr){
             foreach(GameObject c in characters){
                 if(c.GetComponent<Character>().GetCharacterName() == characterName){
                     GameObject i = Instantiate(c, bg.transform);
@@ -42,6 +42,7 @@ public class VisualManager : MonoBehaviour
             }
         }else{
             foreach(GameObject c in charactersR){
+                print(c.GetComponent<Character>().GetCharacterName());
                 if(c.GetComponent<Character>().GetCharacterName() == characterName){
                     GameObject i = Instantiate(c, bg.transform);
                     i.transform.position -= new Vector3(spacing*onStageR.Count*scaleSpacing, 0, onStageR.Count*scaleSpacing);
