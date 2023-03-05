@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     public static string[] piece_tags;
@@ -37,15 +38,81 @@ public class GameManager : MonoBehaviour
     private int[][][] allBoards;
     private int[][][][] allPiecesAllLevels;
     
-    private GameObject[][] pieces;
-    private List<GameObject> lines=new List<GameObject>();
+    private static GameObject[][] pieces;
+    private static float[][] deltaXY=new float[2][];
+    private static List<GameObject> linesV=new List<GameObject>();
+    private static List<GameObject> linesH=new List<GameObject>();
+    private static float[][] deltaLineXY=new float[4][];
     
     private int nextTagNum=0;
+    
+    public static void setDelta(Vector2 mousePosition,string tag){
+        deltaXY[0]=new float[getLength(pieces)];
+        deltaXY[1]=new float[getLength(pieces)];
+        deltaLineXY[0]=new float[linesH.Count];
+        deltaLineXY[1]=new float[linesH.Count];
+        deltaLineXY[2]=new float[linesV.Count];
+        deltaLineXY[3]=new float[linesV.Count];
+        int i=0;      
+        foreach(GameObject[] piece in pieces){
+            foreach(GameObject square in piece){
+                if(square.tag.Equals(tag)){         
+                    deltaXY[0][i]=mousePosition.x-square.transform.position.x;
+                    deltaXY[1][i]=mousePosition.y-square.transform.position.y;               
+                    i++;
+                }            
+            }
+        }
+        
+        i=0;
+        foreach(GameObject line in linesH){
+            if(line.tag.Equals(tag)){
+                deltaLineXY[0][i]=mousePosition.x-line.transform.position.x;
+                deltaLineXY[1][i]=mousePosition.y-line.transform.position.y;                
+                i++;
+            }          
+        }
+        i=0;
+        foreach(GameObject line in linesV){
+            if(line.tag.Equals(tag)){
+                deltaLineXY[2][i]=mousePosition.x-line.transform.position.x;
+                deltaLineXY[3][i]=mousePosition.y-line.transform.position.y;    
+                i++;
+            }          
+        }
+        
+    }
 
+    public static void dragPiece(Vector2 mousePosition,string tag){  
+        int i=0;      
+        foreach(GameObject[] piece in pieces){
+            foreach(GameObject square in piece){
+                if(square.tag.Equals(tag)){                    
+                    square.transform.position=new Vector2((float)System.Math.Ceiling(mousePosition.x+deltaXY[0][i]),(float)System.Math.Ceiling(mousePosition.y+deltaXY[1][i]));                
+                    i++;
+                }            
+            }
+        }
+        i=0;
+        float half=(float)0.5;
+        foreach(GameObject line in linesH){
+            if(line.tag.Equals(tag)){
+                line.transform.position=new Vector2((float)System.Math.Ceiling(mousePosition.x+deltaLineXY[0][i]),(float)System.Math.Ceiling(mousePosition.y+deltaLineXY[1][i]-half)+half); 
+                i++;
+            }          
+        }
+        i=0;        
+        foreach(GameObject line in linesV){
+            if(line.tag.Equals(tag)){
+                line.transform.position=new Vector2((float)System.Math.Ceiling(mousePosition.x+deltaLineXY[2][i]-half)+half,(float)System.Math.Ceiling(mousePosition.y+deltaLineXY[3][i])); 
+                i++;
+            }          
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         allBoards=new int[][][]{boardLVL1,boardLVL2};
         piecesLVL1=new int[][][]{piece1LVL1,piece2LVL1};        
         allPiecesAllLevels=new int[][][][]{piecesLVL1};
@@ -71,7 +138,6 @@ public class GameManager : MonoBehaviour
                 int y=j+boardBottomCornery;
                 surroundBlockwithLines(x,y);
                 GameObject block;
-                Debug.Log(blockAt(i,j,level));
                 switch (blockAt(i,j,level)){
                     case 0:
                         block=Instantiate(White_Square);
@@ -113,15 +179,15 @@ public class GameManager : MonoBehaviour
     private void surroundBlockwithLines(int x, int y, string tag){
         float half=(float)0.5;
         for (int i = 0; i < 2; i++){
-            lines.Add(Instantiate(Horizantal_Line));
-            lines[lines.Count-1].transform.position=new Vector2(x, y+i-half);
-            lines[lines.Count-1].tag=tag;           
+            linesH.Add(Instantiate(Horizantal_Line));
+            linesH[linesH.Count-1].transform.position=new Vector2(x, y+i-half);
+            linesH[linesH.Count-1].tag=tag;           
         }
 
         for (float i = 0; i < 2; i++){
-            lines.Add(Instantiate(Vertical_Line));
-            lines[lines.Count-1].transform.position=new Vector2(x+i-half,y);
-            lines[lines.Count-1].tag=tag;
+            linesV.Add(Instantiate(Vertical_Line));
+            linesV[linesV.Count-1].transform.position=new Vector2(x+i-half,y);
+            linesV[linesV.Count-1].tag=tag;
         }
     }
 
@@ -160,7 +226,12 @@ public class GameManager : MonoBehaviour
             foreach(GameObject square in piece){
                 square.transform.position = new Vector2(square.transform.position.x+leftBorderShop, square.transform.position.y+lowerBorderShop+i*verticalInShopInterval);
             }
-            foreach(GameObject line in lines){
+            foreach(GameObject line in linesH){
+                if(piece[0].tag.Equals(line.tag)){
+                    line.transform.position=new Vector2(line.transform.position.x+leftBorderShop, line.transform.position.y+lowerBorderShop+i*verticalInShopInterval);
+                }
+            }
+            foreach(GameObject line in linesV){
                 if(piece[0].tag.Equals(line.tag)){
                     line.transform.position=new Vector2(line.transform.position.x+leftBorderShop, line.transform.position.y+lowerBorderShop+i*verticalInShopInterval);
                 }
@@ -177,6 +248,14 @@ public class GameManager : MonoBehaviour
                     result++;
                 }
             }
+        }
+        return result;
+    }
+
+    private static int getLength(GameObject[][] array2D){
+        int result=0;
+        foreach(GameObject[] piece in pieces){
+            result+=piece.Length;
         }
         return result;
     }
