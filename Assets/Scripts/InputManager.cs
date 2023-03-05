@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     private string last = "";
     [SerializeField] private VisualManager visualManager;
+    [SerializeField] private DialogueManager dialogueManager;
 
     // Update is called once per frame
     void Update()
@@ -45,6 +46,10 @@ public class InputManager : MonoBehaviour
             print("J");
             last = "Marc";
             visualManager.AddCharacter(last, "idle", false);
+        }
+        if(Input.GetKeyDown(KeyCode.N)){
+            //print("N");
+            dialogueManager.GetNextLine();
         }
     }
 }
