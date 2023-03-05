@@ -123,4 +123,24 @@ public class VisualManager : MonoBehaviour
             Destroy(go);
         }
     }
+
+
+
+    public bool CharacterInScene(string characterName)
+    {
+        foreach(GameObject i in onStage){
+            if(i.GetComponent<Character>().GetCharacterName() == characterName){
+                print("found in a");
+                return true;
+            }
+        }
+        foreach(GameObject i in onStageR){
+            if(i.GetComponent<Character>().GetCharacterName() == characterName){
+                print("found in b");
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
