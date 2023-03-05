@@ -3,7 +3,13 @@ guid: 2215a2e3b97450c44af8f4f9f5951095
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - White_Square: {fileID: 1742292806816741197, guid: 552582a50204bcc449550916477051b0, type: 3}
+  - Vertical_Line: {fileID: 3802623387780452392, guid: 01fdb7edc01c8fb499668c88781d9cdf, type: 3}
+  - Horizantal_Line: {fileID: 4271169255928008096, guid: 6692e5e09de739745b14ff9fe9b6840a, type: 3}
+  - Purple_Square: {fileID: 1561047728899462690, guid: c83a0ce2f04e72443a4f37dcb818f274, type: 3}
+  - Green_Square: {fileID: 8296562361671656864, guid: 8a2f6cc08bd5fc54d8c55e786039e1b2, type: 3}
+  - Square_Pieces: {fileID: 5713729802053261800, guid: 8c6e4591438d4c440a1c6fb96b135321, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
