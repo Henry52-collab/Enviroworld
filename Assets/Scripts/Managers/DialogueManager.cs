@@ -22,8 +22,105 @@ public class DialogueManager : MonoBehaviour
         print (data[i]["Scene"] + ", " +data[i]["Person"] + ", " +data[i]["Pose"] + ", " +data[i]["Text"]);
         dialogueText.text = (string)data[i]["Text"];
         nameText.text = (string)data[i]["Person"];
-        handleScene((string)data[i]["Scene"]);
+        handleChar();
+        
         i++;
+    }
+
+    // if ~ we want scene change
+    // if any of the other characters we want to addCharacter if they are not already there
+    // if they are already there then we don't add them and skip over
+    // why do you want to do StringBuilder with all characters 
+
+    public void handleChar(){
+
+        foreach(char c in (string)data[i]["Scene"])
+
+        {
+            switch (c)
+            {
+                case '#':
+                    if(visualManager.CharacterInScene("YOU"))
+                    {
+                        visualManager.RemoveCharacter("YOU");
+                    }
+                    else
+                    {
+                        visualManager.AddCharacter("YOU","idle",true);
+                    }
+                    break;
+                case '$':
+                    if(visualManager.CharacterInScene("BARRY")){
+                        visualManager.RemoveCharacter("BARRY");
+                    }
+                    else{
+                        visualManager.AddCharacter("BARRY","idle",false);
+                    }
+                    break;
+                case '%':
+                    if(visualManager.CharacterInScene("SIENNA")){
+                        visualManager.RemoveCharacter("SIENNA");
+                    }
+                    else{
+                        visualManager.AddCharacter("SIENNA","idle",false);
+                    }
+                    break;
+                case '^':
+                    if(visualManager.CharacterInScene("CYRUS")){
+                        visualManager.RemoveCharacter("CYRUS");
+                    }
+                    else{
+                        visualManager.AddCharacter("CYRUS","idle",false);
+                    }
+                    break;                
+                case '&':
+                    if(visualManager.CharacterInScene("CASSANDRA")){
+                        visualManager.RemoveCharacter("CASSANDRA");
+                    }
+                    else{
+                        visualManager.AddCharacter("CASSANDRA","idle",false);
+                    }
+                    break;
+                case '*':
+                    if(visualManager.CharacterInScene("HONEY")){
+                        visualManager.RemoveCharacter("HONEY");
+                    }
+                    else{
+                        visualManager.AddCharacter("HONEY","idle",false);
+                    }
+                    break;
+                case '<':
+                    if(visualManager.CharacterInScene("HONEY_BIG_OIL")){
+                        visualManager.RemoveCharacter("HONEY_BIG_OIL");
+                    }
+                    else{
+                        visualManager.AddCharacter("HONEY_BIG_OIL","idle",false);
+                    }
+                    break; 
+                case '>':
+                    if(visualManager.CharacterInScene("BIG_OIL")){
+                        visualManager.RemoveCharacter("BIG_OIL");
+                    }
+                    else{
+                        visualManager.AddCharacter("BIG_OIL","idle",false);
+                    }
+                    break; 
+                case '~':
+                    visualManager.NextScene();
+                    break;
+                case '!':
+                    StringBuilder sb = new StringBuilder((string)data[i]["Text"]);
+                    string temp = (string)data[i]["Text"];
+                    sb[temp.IndexOf("X")] = '#';
+                    sb[temp.IndexOf("Y")] = '$';
+                    sb[temp.IndexOf("Z")] = '%';
+                    nameText.text = sb.ToString();
+                    break;                                                          
+                default:
+                    break;
+            }
+        }
+
     }
 
     private void handleScene(string sceneName){
